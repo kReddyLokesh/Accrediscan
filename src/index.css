@@ -1,0 +1,150 @@
+:root {
+  --color-navy: #0B2E3D;
+  --color-navy-light: #16465B;
+  --color-navy-dark: #061A23;
+  --color-gold: #B8862E;
+  --color-gold-light: #D4A757;
+  --color-gold-bg: #FFF9EE;
+  --color-emerald: #1F4D3A;
+  --color-emerald-light: #2D6F54;
+  --color-emerald-bg: #EDF7F2;
+  --color-crimson: #8C2F2F;
+  --color-crimson-bg: #FDF2F2;
+  --color-cream: #F6F3EA;
+  --color-cream-card: #FAF8F3;
+  --color-card-bg: #ffffff;
+  --color-text-main: #2B2A26;
+  --color-text-muted: #6B6B66;
+  --color-border: rgba(11, 46, 61, 0.12);
+  --color-border-hover: rgba(11, 46, 61, 0.25);
+  
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --shadow-sm: 0 2px 4px rgba(11, 46, 61, 0.04);
+  --shadow-md: 0 4px 14px rgba(11, 46, 61, 0.08);
+  --shadow-lg: 0 12px 30px rgba(11, 46, 61, 0.12);
+}
+
+/* Dark Theme Variables Override */
+[data-theme="dark"] {
+  --color-navy: #1A3B4D;
+  --color-navy-light: #254B60;
+  --color-navy-dark: #0B1921;
+  --color-gold: #D4A757;
+  --color-gold-light: #E5C384;
+  --color-gold-bg: rgba(212, 167, 87, 0.15);
+  --color-emerald: #34A87C;
+  --color-emerald-light: #48C695;
+  --color-emerald-bg: rgba(52, 168, 124, 0.15);
+  --color-crimson: #E55B5B;
+  --color-crimson-bg: rgba(229, 91, 91, 0.15);
+  --color-cream: #0C171C;
+  --color-cream-card: #13222A;
+  --color-card-bg: #172A34;
+  --color-text-main: #E2E8F0;
+  --color-text-muted: #94A3B8;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-hover: rgba(255, 255, 255, 0.25);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphism utility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10deg); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s ease-out forwards;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(184, 134, 46, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(184, 134, 46, 0.4); }
+}
+
+.seal-pulse {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(11, 46, 61, 0.03);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(184, 134, 46, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 134, 46, 0.6);
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 768px) {
+  .grid-2col {
+    grid-template-columns: 1fr !important;
+  }
+  .grid-3col {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Print Rules for Dossier Export */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .card-container {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
